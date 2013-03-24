@@ -1,1 +1,15 @@
+# Java #
+*.class
+
+# IntelliJ #
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+
+# Maven #
 target/
+
+# Mac OSX #
+*.DS_Store
