@@ -12,11 +12,14 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
     <title>Manager Home page</title>
 </h:head>
 
 <h:body>
-    <h2>Welcome Manager <h:outputText value="#{userController.user.fullName}"/></h2>
+    <div class="container">
+        <h2>Welcome Manager <h:outputText value="#{userController.user.fullName}"/></h2>
+    </div>
 </h:body>
 
 </html>
