@@ -38,10 +38,10 @@
                     <f:facet name="header">Email</f:facet>
                     <h:outputText value="#{employee.email}"/>
                 </h:column>
-                <!--<h:column>-->
-                    <!--<f:facet name="header">Actions</f:facet>-->
-                    <!--<h:commandButton action="#{managerController.editEmployee}" value="Edit" styleClass="btn btn-info"/>-->
-                <!--</h:column>-->
+                <h:column>
+                    <f:facet name="header">Actions</f:facet>
+                    <h:commandButton action="#{managerController.editEmployee}" value="Edit" styleClass="btn btn-info"/>
+                </h:column>
             </h:dataTable>
             <div class="form-actions">
                 <h:commandLink action="add_employee" value="Add an employee"/>

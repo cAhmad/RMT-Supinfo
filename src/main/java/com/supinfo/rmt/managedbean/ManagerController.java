@@ -50,7 +50,6 @@ public class ManagerController implements Serializable {
         if(employeeId == null || employeeId.isEmpty()) {
             employeeService.addEmployee(getEmployee());
         } else {
-            // TODO fix the edit, employee is not getting new inputted values from form
             employeeService.editEmployee(getEmployee());
         }
         return "manager_home.jsf";
@@ -66,11 +65,12 @@ public class ManagerController implements Serializable {
     // Accessor
     // ========================================
     public Employee getEmployee() {
-        if (employeeId != null && !employeeId.isEmpty()) {
-            employee = employeeService.getById(Long.valueOf(employeeId));
-        }
         if (employee == null) {
-            employee = new Employee();
+            if (employeeId != null && !employeeId.isEmpty()) {
+                employee = employeeService.getById(Long.valueOf(employeeId));
+            } else {
+                employee = new Employee();
+            }
         }
         return employee;
     }
