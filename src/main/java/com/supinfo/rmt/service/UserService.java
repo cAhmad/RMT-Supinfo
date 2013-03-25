@@ -5,6 +5,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -31,7 +32,11 @@ public class UserService {
                 criteriaBuilder.equal(userRoot.get("password"), passwordHashed)
         );
 
-        return em.createQuery(query).getSingleResult();
+        try {
+            return em.createQuery(query).getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     public User getById(final Long id) {

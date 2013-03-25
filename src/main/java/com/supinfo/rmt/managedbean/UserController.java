@@ -26,17 +26,24 @@ public class UserController implements Serializable {
     public UserController() {
     }
 
+    // ========================================
+    // Utils
+    // ========================================
     public String authenticateUser() {
         user = userService.authenticate(user.getUsername(), user.getPassword());
         if(user == null) {
             return "";
         } else if(user instanceof Employee) {
-            return "employee_home.jsf?faces-redirect=true";
+            return "./employee/employee_home.jsf?faces-redirect=true";
         } else if(user instanceof Manager) {
-            return "manager_home.jsf?faces-redirect=true";
+            return "./manager/manager_home.jsf?faces-redirect=true";
         }
         return "";
     }
+
+    // ========================================
+    // Accessor
+    // ========================================
 
     public User getUser() {
         if(user == null) {

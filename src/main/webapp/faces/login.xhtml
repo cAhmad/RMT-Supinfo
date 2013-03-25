@@ -12,7 +12,7 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../res/css/bootstrap.min.css"/>
     <style type="text/css">
         body {
             padding-top: 150px;
@@ -53,9 +53,9 @@
         <h:form styleClass="form-horizontal form-signin">
             <h2 class="form-signin-heading">Sign in</h2>
             <div class="control-group">
-                <h:outputLabel for="login" styleClass="control-label">Login:</h:outputLabel>
+                <h:outputLabel for="username" styleClass="control-label">Username:</h:outputLabel>
                 <div class="controls">
-                    <h:inputText id="login" value="#{userController.user.username}" styleClass="input-large"/>
+                    <h:inputText id="username" value="#{userController.user.username}" styleClass="input-large"/>
                 </div>
             </div>
             <div class="control-group">
@@ -64,10 +64,8 @@
                     <h:inputSecret id="password" value="#{userController.user.password}" styleClass="input-large"/>
                 </div>
             </div>
-            <div class="control-group">
-                <div class="controls">
-                    <h:commandButton action="#{userController.authenticateUser}" value="Login" styleClass="btn btn-primary btn-large"/>
-                </div>
+            <div class="form-actions">
+                <h:commandButton action="#{userController.authenticateUser}" value="Login" styleClass="btn btn-primary"/>
             </div>
         </h:form>
     </div>
