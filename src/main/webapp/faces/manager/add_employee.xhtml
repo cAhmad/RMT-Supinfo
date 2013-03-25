@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Author:   Ahmad
+  Date:     25/03/13
+  Time:     21:15
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <link type="text/css" rel="stylesheet" href="../../res/css/bootstrap.min.css"/>
+    <title>Add Employee Page</title>
+</h:head>
+
+<h:body>
+    <div class="container">
+        <h:form styleClass="form-horizontal">
+            <fieldset>
+                <legend>Add Employee</legend>
+                <div class="control-group">
+                    <h:outputLabel for="login" styleClass="control-label">Username:</h:outputLabel>
+                    <div class="controls">
+                        <h:inputText id="login" value="#{managerController.employee.username}" styleClass="input-large" required="true"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel for="password" styleClass="control-label">Password:</h:outputLabel>
+                    <div class="controls">
+                        <h:inputSecret id="password" value="#{managerController.employee.password}" styleClass="input-large" required="true"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel for="firstName" styleClass="control-label">FirstName:</h:outputLabel>
+                    <div class="controls">
+                        <h:inputText id="firstName" value="#{managerController.employee.firstName}" styleClass="input-large" required="true"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel for="lastName" styleClass="control-label">LastName:</h:outputLabel>
+                    <div class="controls">
+                        <h:inputText id="lastName" value="#{managerController.employee.lastName}" styleClass="input-large" required="true"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel for="email" styleClass="control-label">Email:</h:outputLabel>
+                    <div class="controls">
+                        <h:inputText id="email" value="#{managerController.employee.email}" styleClass="input-large" required="true"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel for="dateOfBirth" styleClass="control-label">Date of birth:</h:outputLabel>
+                    <div class="controls">
+                        <h:inputText id="dateOfBirth" value="#{managerController.employee.dateOfBirth}" styleClass="input-large" required="true">
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
+                        </h:inputText>
+                        (dd/MM/yyyy)
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <h:commandButton action="#{managerController.addEmployee()}" value="Submit" styleClass="btn btn-primary"/>
+                    <h:commandButton action="manager_home" value="Cancel" styleClass="btn" />
+                </div>
+            </fieldset>
+        </h:form>
+    </div>
+</h:body>
+
+</html>
