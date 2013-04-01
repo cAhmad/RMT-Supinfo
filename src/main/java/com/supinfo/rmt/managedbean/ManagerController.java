@@ -2,10 +2,12 @@ package com.supinfo.rmt.managedbean;
 
 import com.supinfo.rmt.entity.Employee;
 import com.supinfo.rmt.entity.Manager;
+import com.supinfo.rmt.service.BundleService;
 import com.supinfo.rmt.service.EmployeeService;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -47,12 +49,19 @@ public class ManagerController implements Serializable {
         // Hash password
         getEmployee().setPassword(DigestUtils.sha1Hex(getEmployee().getPassword()));
         getEmployee().setManager(getManager());
+
+        final String message;
         if(employeeId == null || employeeId.isEmpty()) {
             employeeService.addEmployee(getEmployee());
+            message = BundleService.getString("employeeCreateSuccess");
         } else {
             employeeService.editEmployee(getEmployee());
+            message = BundleService.getString("employeeEditSuccess");
         }
-        return "manager_home.jsf?faces-redirect=true";
+        FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO,
+                message, message);
+        FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+        return "manager_home.jsf";
     }
 
     public String editEmployee() throws IOException {
@@ -81,18 +90,7 @@ public class ManagerController implements Serializable {
 
     public Manager getManager() {
         if(manager == null) {
-            try {
-                manager = (Manager) userController.getUser();
-            } catch (ClassCastException e) {
-                try {
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("../login.jsf");
-                    FacesContext.getCurrentInstance().responseComplete();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                } catch (IllegalStateException e1) {
-                    e1.printStackTrace();
-                }
-            }
+            manager = (Manager) userController.getUser();
         }
         return manager;
     }

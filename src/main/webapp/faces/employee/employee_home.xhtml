@@ -9,44 +9,41 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<h:head>
-    <link type="text/css" rel="stylesheet" href="../../res/css/bootstrap.min.css"/>
-    <title>Employee Home Page</title>
-</h:head>
+<ui:composition template="employee.xhtml">
+    <ui:define name="title">Employee Home</ui:define>
 
-<h:body>
-    <div class="container">
-        <h2>Welcome Employee <h:outputText value="#{employeeController.employee.fullName}"/></h2>
+    <ui:define name="employeeContent">
         <h:form styleClass="form-horizontal">
             <h:dataTable styleClass="table table-striped" value="#{employeeController.model}" var="workTime">
                 <h:column>
-                    <f:facet name="header">Begin date</f:facet>
+                    <f:facet name="header">#{lang.workTimeBeginDate}</f:facet>
                     <h:outputText value="#{workTime.beginDate}">
-                        <f:convertDateTime dateStyle="short"/>
+                        <f:convertDateTime dateStyle="short" timeZone="Europe/Paris"/>
                     </h:outputText>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">End date</f:facet>
+                    <f:facet name="header">#{lang.workTimeEndDate}</f:facet>
                     <h:outputText value="#{workTime.endDate}">
-                        <f:convertDateTime dateStyle="short"/>
+                        <f:convertDateTime dateStyle="short" timeZone="Europe/Paris"/>
                     </h:outputText>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">Client</f:facet>
-                    <h:outputText value="#{workTime.client.name}"/>
+                    <f:facet name="header">#{lang.workTimeClient}</f:facet>
+                    <h:outputText value="#{workTime.client.name}" />
                 </h:column>
                 <h:column>
                     <f:facet name="header">Actions</f:facet>
-                    <h:commandButton action="#{employeeController.deleteWorkTime()}" value="Remove" styleClass="btn btn-danger"/>
+                    <h:commandButton action="#{employeeController.deleteWorkTime()}" value="#{lang.commonDelete}"
+                                     styleClass="btn btn-danger" onclick="return(confirm('#{lang.workTimeConfirmDelete}'))"/>
                 </h:column>
             </h:dataTable>
             <div class="form-actions">
-                <h:commandLink action="add_worktime" value="Add workTime"/>
+                <h:commandLink action="add_worktime" value="#{lang.workTimeAdd}"/>
             </div>
         </h:form>
-    </div>
-</h:body>
-
+    </ui:define>
+</ui:composition>
 </html>

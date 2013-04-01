@@ -9,51 +9,46 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<h:head>
-    <link type="text/css" rel="stylesheet" href="../../res/css/bootstrap.min.css"/>
-    <title>Add Worktime Page</title>
-</h:head>
+<ui:composition template="employee.xhtml">
+    <ui:define name="title">Add WorkTime</ui:define>
 
-<h:body>
-    <div class="container">
+    <ui:define name="employeeContent">
         <h:form styleClass="form-horizontal">
             <fieldset>
-                <legend>Add Worktime</legend>
+                <legend>#{lang.workTimeAdd}</legend>
                 <div class="control-group">
-                    <h:outputLabel for="beginDate" styleClass="control-label">Begin Date:</h:outputLabel>
+                    <h:outputLabel for="beginDate" styleClass="control-label">#{lang.workTimeBeginDate}:</h:outputLabel>
                     <div class="controls">
                         <h:inputText id="beginDate" value="#{workTimeController.workTime.beginDate}" styleClass="input-large" required="true">
-                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
                         </h:inputText> (dd/MM/yyyy)
                     </div>
                 </div>
                 <div class="control-group">
-                    <h:outputLabel for="endDate" styleClass="control-label">End Date:</h:outputLabel>
+                    <h:outputLabel for="endDate" styleClass="control-label">#{lang.workTimeEndDate}:</h:outputLabel>
                     <div class="controls">
                         <h:inputText id="endDate" value="#{workTimeController.workTime.endDate}" styleClass="input-large" required="true">
-                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
                         </h:inputText> (dd/MM/yyyy)
                     </div>
                 </div>
                 <div class="control-group">
-                    <h:outputLabel for="client" styleClass="control-label">Client:</h:outputLabel>
+                    <h:outputLabel for="client" styleClass="control-label">#{lang.workTimeClient}:</h:outputLabel>
                     <div class="controls">
                         <h:selectOneMenu id="client" value="#{workTimeController.workTime.client}" required="true" converter="#{clientConverter}">
                             <f:selectItems value="#{workTimeController.selectItems}"/>
                         </h:selectOneMenu>
                     </div>
                 </div>
-
                 <div class="form-actions">
-                    <h:commandButton action="#{workTimeController.addWorkTime()}" value="Submit" styleClass="btn btn-primary"/>
-                    <h:commandButton action="employee_home" value="Cancel" styleClass="btn" immediate="true"/>
+                    <h:commandButton action="#{workTimeController.addWorkTime()}" value="#{lang.commonSubmit}" styleClass="btn btn-primary"/>
+                    <h:commandButton action="employee_home" value="#{lang.commonCancel}" styleClass="btn" immediate="true"/>
                 </div>
             </fieldset>
-
         </h:form>
-    </div>
-</h:body>
-
+    </ui:define>
+</ui:composition>
 </html>

@@ -3,11 +3,13 @@ package com.supinfo.rmt.managedbean;
 import com.supinfo.rmt.entity.Client;
 import com.supinfo.rmt.entity.Employee;
 import com.supinfo.rmt.entity.WorkTime;
+import com.supinfo.rmt.service.BundleService;
 import com.supinfo.rmt.service.ClientService;
 import com.supinfo.rmt.service.WorkTimeService;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -43,7 +45,7 @@ public class WorkTimeController implements Serializable {
     @PostConstruct
     public void init() {
         List<Client> clients = clientService.getAll();
-        selectItems.add(new SelectItem(null, "-- Select a Client --"));
+        selectItems.add(new SelectItem(null, "--- " + BundleService.getString("workTimeSelectAClient") + " ---"));
         for (Client client : clients) {
             selectItems.add(new SelectItem(client, client.getName()));
         }
@@ -53,20 +55,17 @@ public class WorkTimeController implements Serializable {
     // Utils
     // ========================================
     public String addWorkTime() throws IOException {
-        try {
-            workTime.setEmployee((Employee) userController.getUser());
-            workTimeService.addWorkTime(workTime);
-        } catch (ClassCastException e) {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("../login.jsf");
-        }
-        return "employee_home.jsf?faces-redirect=true";
+        workTime.setEmployee((Employee) userController.getUser());
+        workTimeService.addWorkTime(workTime);
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
+                BundleService.getString("workTimeCreateSuccess"), BundleService.getString("workTimeCreateSuccess"));
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        return "employee_home.jsf";
     }
 
     // ========================================
     // Accessor
     // ========================================
-
-
     public WorkTime getWorkTime() {
         if (workTime == null) {
             workTime = new WorkTime();

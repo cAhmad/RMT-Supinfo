@@ -9,47 +9,42 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<h:head>
-    <link type="text/css" rel="stylesheet" href="../../res/css/bootstrap.min.css"/>
-    <title>Manager Home page</title>
-</h:head>
+<ui:composition template="manager.xhtml">
+    <ui:define name="title">Manager Home</ui:define>
 
-<h:body>
-    <div class="container">
-        <h2>Welcome Manager <h:outputText value="#{managerController.manager.fullName}"/></h2>
-
+    <ui:define name="managerContent">
         <h:form styleClass="form-horizontal">
             <h:dataTable styleClass="table table-striped" value="#{managerController.model}" var="employee">
                 <h:column>
-                    <f:facet name="header">Username</f:facet>
+                    <f:facet name="header">#{lang.employeeUsername}</f:facet>
                     <h:outputText value="#{employee.username}"/>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">FirstName</f:facet>
+                    <f:facet name="header">#{lang.employeeFirstName}</f:facet>
                     <h:outputText value="#{employee.firstName}"/>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">LastName</f:facet>
+                    <f:facet name="header">#{lang.employeeLastName}</f:facet>
                     <h:outputText value="#{employee.lastName}"/>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">Email</f:facet>
+                    <f:facet name="header">#{lang.employeeEmail}</f:facet>
                     <h:outputText value="#{employee.email}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">Actions</f:facet>
-                    <h:commandButton action="#{managerController.editEmployee}" value="Edit" styleClass="btn btn-info"/>
+                    <h:commandButton action="#{managerController.editEmployee}" value="#{lang.employeeEdit}" styleClass="btn btn-info"/>
                 </h:column>
             </h:dataTable>
             <div class="form-actions">
-                <h:commandLink action="add_employee" value="Add an employee"/>
+                <h:commandLink action="add_employee" value="#{lang.employeeAdd}"/>
                 |
-                <h:commandLink action="add_client" value="Add a client"/>
+                <h:commandLink action="add_client" value="#{lang.clientAdd}"/>
             </div>
         </h:form>
-    </div>
-</h:body>
-
+    </ui:define>
+</ui:composition>
 </html>

@@ -2,9 +2,11 @@ package com.supinfo.rmt.managedbean;
 
 import com.supinfo.rmt.entity.Employee;
 import com.supinfo.rmt.entity.WorkTime;
+import com.supinfo.rmt.service.BundleService;
 import com.supinfo.rmt.service.WorkTimeService;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -43,6 +45,9 @@ public class EmployeeController implements Serializable {
         WorkTime workTimeToDelete = model.getRowData();
         workTimeService.deleteWorkTime(workTimeToDelete);
         setModel(null);
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
+                BundleService.getString("workTimeDeleteSuccess"), BundleService.getString("workTimeDeleteSuccess"));
+        FacesContext.getCurrentInstance().addMessage(null, message);
         return "";
     }
 
@@ -55,18 +60,7 @@ public class EmployeeController implements Serializable {
 
     public Employee getEmployee() throws IOException {
         if (employee == null) {
-            try {
-                employee = (Employee) userController.getUser();
-            } catch (ClassCastException e) {
-                try {
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("../login.jsf");
-                    FacesContext.getCurrentInstance().responseComplete();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                } catch (IllegalStateException e1) {
-                    e1.printStackTrace();
-                }
-            }
+            employee = (Employee) userController.getUser();
         }
         return employee;
     }
