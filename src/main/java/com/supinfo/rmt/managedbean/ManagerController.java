@@ -52,7 +52,7 @@ public class ManagerController implements Serializable {
         } else {
             employeeService.editEmployee(getEmployee());
         }
-        return "manager_home.jsf";
+        return "manager_home.jsf?faces-redirect=true";
     }
 
     public String editEmployee() throws IOException {
@@ -79,12 +79,19 @@ public class ManagerController implements Serializable {
         this.employee = employee;
     }
 
-    public Manager getManager() throws IOException {
+    public Manager getManager() {
         if(manager == null) {
             try {
                 manager = (Manager) userController.getUser();
             } catch (ClassCastException e) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("../login.jsf");
+                try {
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("../login.jsf");
+                    FacesContext.getCurrentInstance().responseComplete();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                } catch (IllegalStateException e1) {
+                    e1.printStackTrace();
+                }
             }
         }
         return manager;
