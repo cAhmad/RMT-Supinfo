@@ -4,7 +4,7 @@ RMT-Supinfo
 This is a JSF2 + JPA2 + Maven3 project.
 Developped and tested on Glassfish3 and mysql
 
-Requierements: 
+Requirements: 
 ==============
 <ul>
   <ol>
