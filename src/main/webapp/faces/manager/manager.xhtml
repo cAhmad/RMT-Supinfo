@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Author:   Ahmad
+  Date:     01/04/13
+  Time:     14:31
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="../authenticated.xhtml">
+    <ui:define name="head">
+        <link type="text/css" rel="stylesheet" href="../../res/css/bootstrap.min.css"/>
+    </ui:define>
+    <ui:define name="title">Manager</ui:define>
+    <ui:define name="content">
+        <h2>#{lang.commonWelcome} #{lang.commonManager} <h:outputText value="#{managerController.manager.fullName}"/></h2>
+        <ui:insert name="managerContent"/>
+    </ui:define>
+</ui:composition>
+</html>
