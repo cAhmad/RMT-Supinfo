@@ -2,7 +2,7 @@ RMT-Supinfo
 ===========
 
 This is a JSF2 + JPA2 + Maven3 project.
-Developped and tested on Glassfish3 and mysql
+Developed and tested on Glassfish3 and MySQL
 
 Requirements: 
 ==============
@@ -31,7 +31,7 @@ Requirements:
 
 <i>hint: You may need to reboot your computer</i>
 <p>
-  If you set everything up well, these commmand lines should work in you Terminal/Cmd <br/>
+  If you set everything up well, these command lines should work in you Terminal/Cmd <br/>
   <b>$ java -version</b> <br/>
   <b>$ mvn --version</b> 
 </p>
@@ -43,7 +43,7 @@ Installation:
 <p>
   - Run Glassfish and go to the admin console <b>http://localhost:4848</b> <br/>
   Create a new Connexion Pool and a Data Source named: <b>jdbc/RMT</b> <br/>
-  <i>'jdbc/RMT' juste match the datasource I declare in the persistence.xml</i>
+  <i>'jdbc/RMT' just match the Data Source I declared in the persistence.xml</i>
 </p>
 
 <p>In your Terminal/Cmd enter this command line: <br/>
@@ -51,5 +51,5 @@ Installation:
   <i>You have now a copy of the entire project</i> <br/><br/>
   <b>$ cd RMT-Supinfo</b> <br/>
   <b>$ git checkout tags/Step1</b> <br/>
-  <i>This will give a working exercice 1 project</i>
+  <i>This will give a working exercise 1 project</i>
 </p>
