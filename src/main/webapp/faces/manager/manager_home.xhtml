@@ -18,7 +18,7 @@
 
 <h:body>
     <div class="container">
-        <h2>Welcome Manager <h:outputText value="#{userController.user.fullName}"/></h2>
+        <h2>Welcome Manager <h:outputText value="#{managerController.manager.fullName}"/></h2>
 
         <h:form styleClass="form-horizontal">
             <h:dataTable styleClass="table table-striped" value="#{managerController.model}" var="employee">
@@ -45,6 +45,8 @@
             </h:dataTable>
             <div class="form-actions">
                 <h:commandLink action="add_employee" value="Add an employee"/>
+                |
+                <h:commandLink action="add_client" value="Add a client"/>
             </div>
         </h:form>
     </div>

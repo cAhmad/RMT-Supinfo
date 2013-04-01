@@ -9,7 +9,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
     <link type="text/css" rel="stylesheet" href="../../res/css/bootstrap.min.css"/>
@@ -18,7 +18,34 @@
 
 <h:body>
     <div class="container">
-        <h2>Welcome Employee <h:outputText value="#{userController.user.fullName}"/></h2>
+        <h2>Welcome Employee <h:outputText value="#{employeeController.employee.fullName}"/></h2>
+        <h:form styleClass="form-horizontal">
+            <h:dataTable styleClass="table table-striped" value="#{employeeController.model}" var="workTime">
+                <h:column>
+                    <f:facet name="header">Begin date</f:facet>
+                    <h:outputText value="#{workTime.beginDate}">
+                        <f:convertDateTime dateStyle="short"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">End date</f:facet>
+                    <h:outputText value="#{workTime.endDate}">
+                        <f:convertDateTime dateStyle="short"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Client</f:facet>
+                    <h:outputText value="#{workTime.client.name}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Actions</f:facet>
+                    <h:commandButton action="#{employeeController.deleteWorkTime()}" value="Remove" styleClass="btn btn-danger"/>
+                </h:column>
+            </h:dataTable>
+            <div class="form-actions">
+                <h:commandLink action="add_worktime" value="Add workTime"/>
+            </div>
+        </h:form>
     </div>
 </h:body>
 

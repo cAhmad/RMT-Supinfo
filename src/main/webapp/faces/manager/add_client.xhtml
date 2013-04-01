@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Author:   Ahmad
+  Date:     01/04/13
+  Time:     11:58
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <link type="text/css" rel="stylesheet" href="../../res/css/bootstrap.min.css"/>
+    <title>Add Client Page</title>
+</h:head>
+
+<h:body>
+    <div class="container">
+        <h:form styleClass="form-horizontal">
+            <fieldset>
+                <legend>Add Client</legend>
+                <div class="control-group">
+                    <h:outputLabel for="name" styleClass="control-label">Name:</h:outputLabel>
+                    <div class="controls">
+                        <h:inputText id="name" value="#{clientController.client.name}" styleClass="input-large" required="true"/>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <h:commandButton action="#{clientController.addClient()}" value="Submit" styleClass="btn btn-primary"/>
+                    <h:commandButton action="manager_home" value="Cancel" styleClass="btn" immediate="true" />
+                </div>
+            </fieldset>
+        </h:form>
+    </div>
+</h:body>
+
+</html>

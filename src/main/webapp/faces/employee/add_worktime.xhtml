@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Author:   Ahmad
+  Date:     01/04/13
+  Time:     12:06
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <link type="text/css" rel="stylesheet" href="../../res/css/bootstrap.min.css"/>
+    <title>Add Worktime Page</title>
+</h:head>
+
+<h:body>
+    <div class="container">
+        <h:form styleClass="form-horizontal">
+            <fieldset>
+                <legend>Add Worktime</legend>
+                <div class="control-group">
+                    <h:outputLabel for="beginDate" styleClass="control-label">Begin Date:</h:outputLabel>
+                    <div class="controls">
+                        <h:inputText id="beginDate" value="#{workTimeController.workTime.beginDate}" styleClass="input-large" required="true">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:inputText> (dd/MM/yyyy)
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel for="endDate" styleClass="control-label">End Date:</h:outputLabel>
+                    <div class="controls">
+                        <h:inputText id="endDate" value="#{workTimeController.workTime.endDate}" styleClass="input-large" required="true">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:inputText> (dd/MM/yyyy)
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h:outputLabel for="client" styleClass="control-label">Client:</h:outputLabel>
+                    <div class="controls">
+                        <h:selectOneMenu id="client" value="#{workTimeController.workTime.client}" required="true" converter="#{clientConverter}">
+                            <f:selectItems value="#{workTimeController.selectItems}"/>
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <h:commandButton action="#{workTimeController.addWorkTime()}" value="Submit" styleClass="btn btn-primary"/>
+                    <h:commandButton action="employee_home" value="Cancel" styleClass="btn" immediate="true"/>
+                </div>
+            </fieldset>
+
+        </h:form>
+    </div>
+</h:body>
+
+</html>
