@@ -22,39 +22,37 @@
                 <div class="control-group">
                     <h:outputLabel for="login" styleClass="control-label">#{lang.employeeUsername}:</h:outputLabel>
                     <div class="controls">
-                        <h:inputText id="login" value="#{managerController.employee.username}" styleClass="input-large" required="true"/>
+                        <h:inputText id="login" value="#{managerController.employee.username}" styleClass="input-large" />
                     </div>
                 </div>
                 <div class="control-group">
                     <h:outputLabel for="password" styleClass="control-label">#{lang.employeePassword}:</h:outputLabel>
                     <div class="controls">
-                        <h:inputSecret id="password" value="#{managerController.employee.password}" styleClass="input-large" required="true"/>
+                        <h:inputSecret id="password" value="#{managerController.employee.password}" styleClass="input-large" />
                     </div>
                 </div>
                 <div class="control-group">
                     <h:outputLabel for="firstName" styleClass="control-label">#{lang.employeeFirstName}:</h:outputLabel>
                     <div class="controls">
-                        <h:inputText id="firstName" value="#{managerController.employee.firstName}" styleClass="input-large" required="true"/>
+                        <h:inputText id="firstName" value="#{managerController.employee.firstName}" styleClass="input-large" />
                     </div>
                 </div>
                 <div class="control-group">
                     <h:outputLabel for="lastName" styleClass="control-label">#{lang.employeeLastName}:</h:outputLabel>
                     <div class="controls">
-                        <h:inputText id="lastName" value="#{managerController.employee.lastName}" styleClass="input-large" required="true"/>
+                        <h:inputText id="lastName" value="#{managerController.employee.lastName}" styleClass="input-large" />
                     </div>
                 </div>
                 <div class="control-group">
                     <h:outputLabel for="email" styleClass="control-label">#{lang.employeeEmail}:</h:outputLabel>
                     <div class="controls">
-                        <h:inputText id="email" value="#{managerController.employee.email}" styleClass="input-large" required="true"
-                                     validator="emailValidator"/>
+                        <h:inputText id="email" value="#{managerController.employee.email}" styleClass="input-large" />
                     </div>
                 </div>
                 <div class="control-group">
                     <h:outputLabel for="dateOfBirth" styleClass="control-label">#{lang.employeeDateOfBirth}:</h:outputLabel>
                     <div class="controls">
-                        <h:inputText id="dateOfBirth" value="#{managerController.employee.dateOfBirth}" styleClass="input-large" required="true"
-                                     validator="dateOfBirthValidator">
+                        <h:inputText id="dateOfBirth" value="#{managerController.employee.dateOfBirth}" styleClass="input-large" >
                             <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
                         </h:inputText>
                         (dd/MM/yyyy)

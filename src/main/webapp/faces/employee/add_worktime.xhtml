@@ -22,7 +22,7 @@
                 <div class="control-group">
                     <h:outputLabel for="beginDate" styleClass="control-label">#{lang.workTimeBeginDate}:</h:outputLabel>
                     <div class="controls">
-                        <h:inputText id="beginDate" value="#{workTimeController.workTime.beginDate}" styleClass="input-large" required="true">
+                        <h:inputText id="beginDate" value="#{workTimeController.workTime.beginDate}" styleClass="input-large" >
                             <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
                         </h:inputText> (dd/MM/yyyy)
                     </div>
@@ -30,7 +30,7 @@
                 <div class="control-group">
                     <h:outputLabel for="endDate" styleClass="control-label">#{lang.workTimeEndDate}:</h:outputLabel>
                     <div class="controls">
-                        <h:inputText id="endDate" value="#{workTimeController.workTime.endDate}" styleClass="input-large" required="true">
+                        <h:inputText id="endDate" value="#{workTimeController.workTime.endDate}" styleClass="input-large" >
                             <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
                         </h:inputText> (dd/MM/yyyy)
                     </div>
@@ -38,7 +38,7 @@
                 <div class="control-group">
                     <h:outputLabel for="client" styleClass="control-label">#{lang.workTimeClient}:</h:outputLabel>
                     <div class="controls">
-                        <h:selectOneMenu id="client" value="#{workTimeController.workTime.client}" required="true" converter="#{clientConverter}">
+                        <h:selectOneMenu id="client" value="#{workTimeController.workTime.client}" converter="#{clientConverter}">
                             <f:selectItems value="#{workTimeController.selectItems}"/>
                         </h:selectOneMenu>
                     </div>
