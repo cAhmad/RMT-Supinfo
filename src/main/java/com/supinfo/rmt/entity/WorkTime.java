@@ -1,6 +1,7 @@
 package com.supinfo.rmt.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,15 +15,19 @@ public class WorkTime implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "{constraints.workTime.beginDate.notnull}")
     @Temporal(TemporalType.DATE)
     private Date beginDate;
 
+    @NotNull(message = "{constraints.workTime.endDate.notnull}")
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
+    @NotNull(message = "{constraints.workTime.client.notnull}")
     @OneToOne
     private Client client = new Client();
 
+    @NotNull(message = "{constraints.workTime.employee.notnull}")
     @ManyToOne
     private Employee employee;
 

@@ -3,6 +3,7 @@ package com.supinfo.rmt.managedbean;
 import com.supinfo.rmt.entity.Client;
 import com.supinfo.rmt.entity.Employee;
 import com.supinfo.rmt.entity.WorkTime;
+import com.supinfo.rmt.managedbean.UserController;
 import com.supinfo.rmt.service.BundleService;
 import com.supinfo.rmt.service.ClientService;
 import com.supinfo.rmt.service.WorkTimeService;
@@ -38,9 +39,6 @@ public class WorkTimeController implements Serializable {
 
     private WorkTime workTime;
     private List<SelectItem> selectItems = new ArrayList<SelectItem>();
-
-    public WorkTimeController() {
-    }
 
     @PostConstruct
     public void init() {
