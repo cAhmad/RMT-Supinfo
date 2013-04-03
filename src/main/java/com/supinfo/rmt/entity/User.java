@@ -1,5 +1,6 @@
 package com.supinfo.rmt.entity;
 
+import com.supinfo.rmt.validator.annotation.CheckPassword;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -29,8 +30,7 @@ public class User implements Serializable {
     @Size(min = 2, max = 50, message = "{constraints.user.username.size}")
     protected String username;
 
-    @NotEmpty(message = "{constraints.user.password.notEmpty}")
-    @Size(min = 6, message = "{constraints.user.password.size}")
+    @CheckPassword
     protected String password;
 
     @NotEmpty(message = "{constraints.user.fistName.notEmpty}")
