@@ -3,6 +3,7 @@ package com.supinfo.rmt.entity;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,6 +15,7 @@ import java.util.Date;
 @DiscriminatorValue(value= "employee")
 public class Employee extends User implements Serializable {
 
+    @NotNull(message = "{constraints.employee.manager.notnull}")
     @ManyToOne
     private Manager manager;
 

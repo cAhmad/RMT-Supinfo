@@ -1,6 +1,9 @@
 package com.supinfo.rmt.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -14,6 +17,9 @@ public class Client implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "{constraints.client.name.notEmpty}")
+    @Size(min = 2, max = 50, message = "{constraints.client.name.size}")
+    @Column(unique = true)
     private String name;
 
     public Client() {
