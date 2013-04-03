@@ -1,6 +1,13 @@
 package com.supinfo.rmt.entity;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,14 +25,31 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
+    @NotEmpty(message = "{constraints.user.username.notEmpty}")
+    @Size(min = 2, max = 50, message = "{constraints.user.username.size}")
     protected String username;
-    protected String password;
-    protected String firstName;
-    protected String lastName;
 
+    @NotEmpty(message = "{constraints.user.password.notEmpty}")
+    @Size(min = 6, message = "{constraints.user.password.size}")
+    protected String password;
+
+    @NotEmpty(message = "{constraints.user.fistName.notEmpty}")
+    @Size(min = 2, max = 50, message = "{constraints.user.firstName.size}")
+    protected String firstName;
+
+    @NotEmpty(message = "{constraints.user.lastName.notEmpty}")
+    @Size(min = 2, max = 50, message = "{constraints.user.lastName.size}")
+    protected String lastName;
+    
+    @Email
+    @NotEmpty(message = "{constraints.user.email.notEmpty}")
+    @Pattern(regexp = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$",
+            message = "{constraints.user.email.pattern}")
     @Column(unique = true)
     protected String email;
 
+    @Past(message = "{constraints.user.birthDate.past}")
+    @NotNull(message = "{constraints.user.birthDate.notnull}")
     @Temporal(TemporalType.DATE)
     protected Date dateOfBirth;
 
