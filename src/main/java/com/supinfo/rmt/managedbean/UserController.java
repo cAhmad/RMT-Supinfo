@@ -10,7 +10,9 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Locale;
 
@@ -49,6 +51,18 @@ public class UserController implements Serializable {
             return "./manager/manager_home.jsf?faces-redirect=true";
         }
         return "";
+    }
+
+    public String logout() throws IOException {
+        setUser(null);
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        externalContext.getSessionMap().clear();
+        externalContext.redirect(getLoginPage());
+        return "";
+    }
+
+    public String getLoginPage() {
+        return FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() + "/faces/login.jsf";
     }
 
     // ========================================
