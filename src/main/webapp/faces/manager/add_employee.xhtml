@@ -20,37 +20,37 @@
             <fieldset>
                 <legend>#{lang.employeeAdd}</legend>
                 <div class="control-group">
-                    <h:outputLabel for="login" styleClass="control-label">#{lang.employeeUsername}:</h:outputLabel>
+                    <h:outputLabel for="login" styleClass="control-label" value="#{lang.employeeUsername}:"/>
                     <div class="controls">
                         <h:inputText id="login" value="#{managerController.employee.username}" styleClass="input-large" />
                     </div>
                 </div>
                 <div class="control-group">
-                    <h:outputLabel for="password" styleClass="control-label">#{lang.employeePassword}:</h:outputLabel>
+                    <h:outputLabel for="password" styleClass="control-label" value="#{lang.employeePassword}:"/>
                     <div class="controls">
                         <h:inputSecret id="password" value="#{managerController.employeePassword}" styleClass="input-large" />
                     </div>
                 </div>
                 <div class="control-group">
-                    <h:outputLabel for="firstName" styleClass="control-label">#{lang.employeeFirstName}:</h:outputLabel>
+                    <h:outputLabel for="firstName" styleClass="control-label" value="#{lang.employeeFirstName}:"/>
                     <div class="controls">
                         <h:inputText id="firstName" value="#{managerController.employee.firstName}" styleClass="input-large" />
                     </div>
                 </div>
                 <div class="control-group">
-                    <h:outputLabel for="lastName" styleClass="control-label">#{lang.employeeLastName}:</h:outputLabel>
+                    <h:outputLabel for="lastName" styleClass="control-label" value="#{lang.employeeLastName}:"/>
                     <div class="controls">
                         <h:inputText id="lastName" value="#{managerController.employee.lastName}" styleClass="input-large" />
                     </div>
                 </div>
                 <div class="control-group">
-                    <h:outputLabel for="email" styleClass="control-label">#{lang.employeeEmail}:</h:outputLabel>
+                    <h:outputLabel for="email" styleClass="control-label" value="#{lang.employeeEmail}:"/>
                     <div class="controls">
                         <h:inputText id="email" value="#{managerController.employee.email}" styleClass="input-large" />
                     </div>
                 </div>
                 <div class="control-group">
-                    <h:outputLabel for="dateOfBirth" styleClass="control-label">#{lang.employeeDateOfBirth}:</h:outputLabel>
+                    <h:outputLabel for="dateOfBirth" styleClass="control-label" value="#{lang.employeeDateOfBirth}:"/>
                     <div class="controls">
                         <h:inputText id="dateOfBirth" value="#{managerController.employee.dateOfBirth}" styleClass="input-large" >
                             <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris"/>
