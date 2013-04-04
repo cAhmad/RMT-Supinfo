@@ -1,5 +1,7 @@
 package com.supinfo.rmt.service;
 
+import com.supinfo.rmt.managedbean.UserController;
+
 import java.io.Serializable;
 import java.util.ResourceBundle;
 
@@ -8,7 +10,8 @@ import java.util.ResourceBundle;
  * @version $Id$
  */
 public class BundleService implements Serializable {
-    private final static ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle("com.supinfo.rmt.lang.i18n");
+    private final static ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle("com.supinfo.rmt.lang.i18n",
+            UserController.getCurrentLocale());
 
     private BundleService() {
     }
