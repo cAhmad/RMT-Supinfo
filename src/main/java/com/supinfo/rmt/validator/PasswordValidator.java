@@ -16,7 +16,7 @@ public class PasswordValidator implements ConstraintValidator<CheckPassword, Str
 
     @Override
     public void initialize(CheckPassword checkPassword) {
-        final String passwordPattern = "^[(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)]{5,50}.+$";
+        final String passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{6,50}$";
         pattern = Pattern.compile(passwordPattern);
     }
 
