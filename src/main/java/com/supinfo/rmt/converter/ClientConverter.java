@@ -23,7 +23,11 @@ public class ClientConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String newValue) {
-        return clientService.getByName(newValue);
+        try {
+            return clientService.getById(Long.valueOf(newValue));
+        } catch (ClassCastException e) {
+            return null;
+        }
     }
 
     @Override
@@ -31,7 +35,7 @@ public class ClientConverter implements Converter {
         if(value == null) {
             return "";
         } else if (value instanceof Client) {
-            return ((Client) value).getName();
+            return ((Client) value).getId().toString();
         } else {
             return value.toString();
         }
