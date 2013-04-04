@@ -53,13 +53,13 @@
         <h:form styleClass="form-horizontal form-signin">
             <h2 class="form-signin-heading">#{lang.commonSignIn}</h2>
             <div class="control-group">
-                <h:outputLabel for="username" styleClass="control-label">#{lang.loginUsername}:</h:outputLabel>
+                <h:outputLabel for="username" styleClass="control-label" value="#{lang.loginUsername}:"/>
                 <div class="controls">
                     <h:inputText id="username" value="#{userController.user.username}" styleClass="input-large" />
                 </div>
             </div>
             <div class="control-group">
-                <h:outputLabel for="password" styleClass="control-label">#{lang.loginPassword}:</h:outputLabel>
+                <h:outputLabel for="password" styleClass="control-label" value="#{lang.loginPassword}:"/>
                 <div class="controls">
                     <h:inputSecret id="password" value="#{userController.user.password}" styleClass="input-large" />
                 </div>

@@ -16,7 +16,10 @@
         <link type="text/css" rel="stylesheet" href="../../res/css/bootstrap.min.css"/>
     </ui:define>
     <ui:define name="title">Employee</ui:define>
-
+    <ui:define name="menuList">
+        <li><h:outputLink value="employee_home.jsf">#{lang.commonHome}</h:outputLink></li>
+        <li><h:outputLink value="add_worktime.jsf">#{lang.workTimeAdd}</h:outputLink></li>
+    </ui:define>
     <ui:define name="content">
         <h2>#{lang.commonWelcome} #{lang.commonEmployee} <h:outputText value="#{employeeController.employee.fullName}"/></h2>
         <ui:insert name="employeeContent"/>
