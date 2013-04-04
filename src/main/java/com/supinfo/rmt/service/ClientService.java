@@ -17,7 +17,7 @@ import java.util.List;
 @Stateless
 public class ClientService {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "RMT-PU")
     private EntityManager em;
 
     public void addClient(Client client) {

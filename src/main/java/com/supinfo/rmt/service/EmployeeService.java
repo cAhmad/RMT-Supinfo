@@ -18,7 +18,7 @@ import java.util.List;
 @Stateless
 public class EmployeeService {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "RMT-PU")
     private EntityManager em;
 
     public void addEmployee(Employee employee) {

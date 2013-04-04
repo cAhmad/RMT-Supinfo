@@ -18,7 +18,7 @@ import javax.persistence.criteria.Root;
 @Stateless
 public class UserService {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "RMT-PU")
     private EntityManager em;
 
     public User authenticate(final String username, final String password) {

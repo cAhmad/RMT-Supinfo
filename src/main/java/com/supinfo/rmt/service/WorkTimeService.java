@@ -18,7 +18,7 @@ import java.util.List;
 @Stateless
 public class WorkTimeService {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "RMT-PU")
     private EntityManager em;
 
     public void addWorkTime(WorkTime workTime) {
