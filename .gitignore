@@ -13,3 +13,6 @@ target/
 
 # Mac OSX #
 *.DS_Store
+
+# CloudBess #
+src/main/webapp/WEB-INF/cloudbees-web.xml
