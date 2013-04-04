@@ -12,6 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
+import java.util.Locale;
 
 /**
  * @author Ahmad
@@ -25,6 +26,8 @@ public class UserController implements Serializable {
     private UserService userService;
 
     private User user;
+
+    private static Locale currentLocale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 
     public UserController() {
     }
@@ -61,5 +64,12 @@ public class UserController implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public static Locale getCurrentLocale() {
+        if (currentLocale == null) {
+            return Locale.FRANCE;
+        }
+        return currentLocale;
     }
 }
