@@ -13,6 +13,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
+    <!-- ===== Making body starting lower than nav bar ===== -->
     <style type="text/css">
         body {
             padding-top: 60px;
@@ -22,6 +23,12 @@
     <ui:insert name="head">
         <link type="text/css" rel="stylesheet" href="../res/css/bootstrap.min.css"/>
     </ui:insert>
+    <!-- ===== Making alert list more compact ===== -->
+    <style type="text/css">
+        .alert {
+            margin-bottom: 5px;
+        }
+    </style>
     <title>RMT - <ui:insert name="title"/> Page</title>
 </h:head>
 
@@ -52,12 +59,13 @@
     </div>
     <div class="container">
         <div class="pagination-centered alert-block">
-            <h:messages styleClass="unstyled" errorClass="alert-error" infoClass="alert-info"
-                        fatalClass="alert-danger" warnClass="alert-info"/>
+            <h:messages styleClass="unstyled" errorClass="alert alert-error" infoClass="alert alert-info"
+                        fatalClass="alert alert-danger" warnClass="alert alert-info"/>
         </div>
         <ui:insert name="content"/>
     </div>
 
+    <!-- ===== Add placeholder for these two input ===== -->
     <script type="text/javascript">
         var username = document.getElementById('username');
         var password = document.getElementById('password');
