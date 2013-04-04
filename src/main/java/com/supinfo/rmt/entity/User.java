@@ -1,6 +1,5 @@
 package com.supinfo.rmt.entity;
 
-import com.supinfo.rmt.validator.annotation.CheckPassword;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -29,7 +28,7 @@ public class User implements Serializable {
     @Size(min = 2, max = 50, message = "{constraints.user.username.size}")
     protected String username;
 
-    @CheckPassword
+    @NotEmpty(message = "{constraints.user.password.notEmpty}")
     protected String password;
 
     @NotEmpty(message = "{constraints.user.fistName.notEmpty}")
