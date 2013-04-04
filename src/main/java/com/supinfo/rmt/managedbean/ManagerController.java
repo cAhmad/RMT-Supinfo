@@ -51,7 +51,7 @@ public class ManagerController implements Serializable {
     // ========================================
     public String addEmployee() throws IOException {
         // Hash password
-        employee.setPassword(DigestUtils.sha1Hex(employeePassword));
+        getEmployee().setPassword(DigestUtils.sha1Hex(employeePassword));
         getEmployee().setManager(getManager());
 
         final String message;
