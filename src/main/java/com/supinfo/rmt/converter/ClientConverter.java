@@ -1,9 +1,11 @@
 package com.supinfo.rmt.converter;
 
 import com.supinfo.rmt.entity.Client;
+import com.supinfo.rmt.service.BundleService;
 import com.supinfo.rmt.service.ClientService;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -23,7 +25,15 @@ public class ClientConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String newValue) {
-        return clientService.getByName(newValue);
+        try {
+            return clientService.getById(Long.valueOf(newValue));
+        } catch (ClassCastException e) {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    BundleService.getString("clientConverterError"),
+                    BundleService.getString("clientConverterError"));
+            FacesContext.getCurrentInstance().addMessage(null, message);
+            return null;
+        }
     }
 
     @Override
@@ -31,7 +41,7 @@ public class ClientConverter implements Converter {
         if(value == null) {
             return "";
         } else if (value instanceof Client) {
-            return ((Client) value).getName();
+            return ((Client) value).getId().toString();
         } else {
             return value.toString();
         }
