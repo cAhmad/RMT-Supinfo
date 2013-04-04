@@ -4,6 +4,7 @@ import com.supinfo.rmt.entity.Employee;
 import com.supinfo.rmt.entity.Manager;
 import com.supinfo.rmt.service.BundleService;
 import com.supinfo.rmt.service.EmployeeService;
+import com.supinfo.rmt.validator.annotation.CheckPassword;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.ejb.EJB;
@@ -38,6 +39,9 @@ public class ManagerController implements Serializable {
     private DataModel<Employee> model;
     private final String employeeId;
 
+    @CheckPassword
+    private String employeePassword;
+
     public ManagerController() {
         employeeId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
     }
@@ -47,7 +51,7 @@ public class ManagerController implements Serializable {
     // ========================================
     public String addEmployee() throws IOException {
         // Hash password
-        getEmployee().setPassword(DigestUtils.sha1Hex(getEmployee().getPassword()));
+        getEmployee().setPassword(DigestUtils.sha1Hex(employeePassword));
         getEmployee().setManager(getManager());
 
         final String message;
@@ -109,5 +113,13 @@ public class ManagerController implements Serializable {
 
     public void setUserController(UserController userController) {
         this.userController = userController;
+    }
+
+    public String getEmployeePassword() {
+        return employeePassword;
+    }
+
+    public void setEmployeePassword(String employeePassword) {
+        this.employeePassword = employeePassword;
     }
 }
