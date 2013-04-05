@@ -6,10 +6,10 @@
     <persistence-unit name="RMT-PU" transaction-type="JTA">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <!-- ========== Local data source ========== -->
-        <!--<jta-data-source>jdbc/RMT</jta-data-source>-->
+        <jta-data-source>jdbc/RMT</jta-data-source>
 
         <!-- ========== CloudBees data source ========== -->
-        <jta-data-source>jdbc/rmt-supinfodb</jta-data-source>
+        <!--<jta-data-source>jdbc/rmt-supinfodb</jta-data-source>-->
 
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
@@ -20,7 +20,7 @@
             <property name="hibernate.use_sql_comments" value="false"/>
 
             <!-- ========== CloudBees Properties ========== -->
-            <property name="javax.persistence.jdbc.driver" value="com.cloudbees.jdbc.Driver"/>
+            <!--<property name="javax.persistence.jdbc.driver" value="com.cloudbees.jdbc.Driver"/>-->
         </properties>
     </persistence-unit>
 </persistence>

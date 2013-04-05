@@ -35,7 +35,7 @@
             <version>4.1.9.Final</version>
             <!-- ===== For CloudBees ===== -->
             <!-- ===== (comment <scope> in local unless Glassfish contains hibernate-entitymanager libs) ===== -->
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
 
         <!-- ========== Hibernate Validator ========== -->
