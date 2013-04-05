@@ -53,3 +53,29 @@ Installation:
   <b>$ git checkout tags/Step1</b> <br/>
   <i>This will give a working exercise 1 project</i>
 </p>
+
+Utilisation:
+=============
+
+<p>
+Open the project with your IDE, Build the project with dependencies if you got error.<br/>
+You can also go to the RMT-Supinfo project directory and type in your Terminal/Cmd:<br/>
+<b>$ mvn clean package</b><br/>
+Dependencies errors should be gone now and you can Deploy it.<br/>
+</p>
+
+<p>
+Once you got it deployed, you should have 3 Tables in your DataBase <i>which are Client, RMTUser, WorkTime</i>
+<p/>
+<p>
+<b>You have to insert a Manager to use this application</b><br/><br/>
+
+Open a Terminal/Cmd and type:<br/>
+<b>$ mysql DATABASE_NAME -uRMT_DATABASE_USER -pRMT_DATABASE_USER_PASSWORD</b><br/>
+<b> mysql> INSERT INTO `RMTUser` (`userType`, `id`, `dateOfBirth`, `email`, `firstName`, `lastName`, `password`, `username`, `manager_id`) VALUES
+('manager', 1, '1975-10-07', 'eric.cartman@mail.com', 'Eric', 'Cartman', 'ebfc7910077770c8340f63cd2dca2ac1f120444f', 'manager', NULL); </b><br/><br/>
+
+The password is '<b>Passw0rd</b>' hashed with <b>SHA1</b>, you can changed it but do not forget to SHA1 it.<br/><br/>
+
+Once you set everything up correctly you ready to go :-)
+</p>
