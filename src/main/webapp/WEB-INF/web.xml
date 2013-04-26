@@ -33,6 +33,19 @@
         </session-timeout>
     </session-config>
 
+    <!-- ========== Restrict Access to template and .xhtml files ========== -->
+    <security-constraint>
+        <display-name>Restrict XHTML Documents</display-name>
+        <web-resource-collection>
+            <web-resource-name>XHTML</web-resource-name>
+            <url-pattern>*.xhtml</url-pattern>
+            <url-pattern>/faces/authenticated.jsf</url-pattern>
+            <url-pattern>/faces/manager/manager.jsf</url-pattern>
+            <url-pattern>/faces/employee/employee.jsf</url-pattern>
+        </web-resource-collection>
+        <auth-constraint/>
+    </security-constraint>
+
     <!-- ========== CloudBees ========== -->
     <resource-ref>
         <res-ref-name>jdbc/rmt-supinfodb</res-ref-name>
